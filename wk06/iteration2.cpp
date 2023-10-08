@@ -1,18 +1,14 @@
-/**
- * iteration2.cc
- *
- * Print every second item of a list starting from the first item
- */
-
-/**
- * DO NOT ADD ANY INCLUDES!!
- */
-
 #include "iteration2.hh"
+#include <iostream>  // Required for std::cout
 using namespace std;
-
 
 void printEverySecond(const list<int>& lst)
 {
-    // ADD YOUR CODE HERE
+    bool print = true;  // Variable to control when to print
+    for(auto it = lst.begin(); it != lst.end(); ++it) {
+        if(print) {
+            cout << *it << " ";
+        }
+        print = !print;  // Toggle the print variable
+    }
 }

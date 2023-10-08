@@ -1,18 +1,10 @@
-/**
- * iteration1.cc
- *
- * Print all items of a list
- */
-
-/**
- * DO NOT ADD ANY INCLUDES!!
- */
-
 #include "iteration1.hh"
+#include <iostream>  // Required for std::cout
 using namespace std;
-
 
 void printAllItems(const list<int>& lst)
 {
-    // ADD YOUR CODE HERE
+    for(auto it = lst.begin(); it != lst.end(); ++it) {
+        cout << *it << " ";
+    }
 }

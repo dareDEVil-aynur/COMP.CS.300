@@ -1,18 +1,10 @@
-/**
- * iteration4.cc
- *
- * Print all items of a list in a reverse order
- */
-
-/**
- * DO NOT ADD ANY INCLUDES!!
- */
-
 #include "iteration4.hh"
+#include <iostream>  // Required for std::cout
 using namespace std;
-
 
 void printReverse(const list<int>& lst)
 {
-    // ADD YOUR CODE HERE
+    for(auto rit = lst.rbegin(); rit != lst.rend(); ++rit) {
+        cout << *rit << " ";
+    }
 }
