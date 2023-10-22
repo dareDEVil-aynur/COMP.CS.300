@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 /**
  * @brief Remove from vector v all elements with value less than the limit
  * @param v a vector whose values are to be erased if less than limit
@@ -15,6 +14,11 @@ using namespace std;
  */
 int removeLessThan(std::vector<int>& v, int limit)
 {
-    return EXIT_FAILURE;
-}
+    auto new_end = std::remove_if(v.begin(), v.end(), [limit](int value) {
+        return value < limit;
+    });
 
+    v.erase(new_end, v.end());
+
+    return EXIT_SUCCESS;
+}
