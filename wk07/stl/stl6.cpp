@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 /**
  * @brief From a map find the first element, whose value is at least given limit
  *        regardless of the key of the element. Return only the value or
@@ -17,5 +16,12 @@ using namespace std;
  */
 int findAtLeastGiven(std::map<std::string, int>& m, int given)
 {
+    auto it = std::find_if(m.begin(), m.end(), [given](const pair<string, int>& element) {
+        return element.second >= given;
+    });
+    
+    if (it != m.end())
+        return it->second;
+    else
+        return NOT_FOUND;
 }
-
