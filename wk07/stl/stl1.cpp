@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 /**
  * @brief sort a given vector to an ascending order
  *
@@ -15,6 +14,13 @@ using namespace std;
  */
 int sortAsc(std::vector<int>& v)
 {
-    return EXIT_FAILURE;
+    try 
+    {
+        std::sort(v.begin(), v.end()); // Sorting the vector in ascending order
+        return EXIT_SUCCESS;
+    } 
+    catch(...) 
+    {
+        return EXIT_FAILURE;
+    }
 }
-
