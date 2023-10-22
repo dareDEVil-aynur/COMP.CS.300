@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 /**
  * @brief Return an iterator which points to the last even integer of the vector
  *        If the value is not found, return v.rend()
@@ -16,5 +15,5 @@ using namespace std;
  */
 std::vector<int>::reverse_iterator findLastEven(std::vector<int>& v)
 {
+    return std::find_if(v.rbegin(), v.rend(), [](int n) { return n % 2 == 0; }); // Returns reverse iterator to the last even integer, or v.rend() if not found
 }
-
