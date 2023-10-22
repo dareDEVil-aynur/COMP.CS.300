@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 /**
  * @brief Arrange vector in three subsequent sections:
  *        - those divisible by three (asc order)
@@ -17,6 +16,20 @@ using namespace std;
  */
 int sortMod3(std::vector<int>& v)
 {
-    return EXIT_FAILURE;
-}
+    try 
+    {
+        std::stable_sort(v.begin(), v.end(), [](int a, int b) {
+            // First sort by modulo 3
+            if (a % 3 != b % 3) return a % 3 < b % 3;
+            
+            // Then sort by value within each modulo 3 category
+            return a < b;
+        });
 
+        return EXIT_SUCCESS;
+    } 
+    catch(...) 
+    {
+        return EXIT_FAILURE;
+    }
+}
