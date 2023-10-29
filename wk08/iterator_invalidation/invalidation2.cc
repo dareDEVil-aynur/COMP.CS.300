@@ -13,9 +13,9 @@ using namespace std;
 void eraseEverySecond(std::vector<int>& vec) {
     auto it = vec.begin();
     while (it != vec.end()) {
-        it = vec.erase(it);  // erase the current element and return the iterator to the next element
+        ++it;  // skip the current element
         if (it != vec.end()) {
-            ++it;  // skip the next element
+            it = vec.erase(it);  // erase the next element and return the iterator to the subsequent element
         }
     }
 }
