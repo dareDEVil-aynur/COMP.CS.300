@@ -1,8 +1,12 @@
 // Datastructures.hh
 //
-// Student name:
-// Student email:
-// Student number:
+// Student name: Aynur Rahman Talukdar
+// Student email: aynurrahman.talukdar@tuni.fi
+// Student number: 150189473
+// AI tool used and the version: ChatGPT, GPT 3.5
+// The purpose of the use: optimizing time complexities
+// The part(s) where it was utilized: get_affiliations_alphabetically, get_referenced_by_chain, get_all_references
+// get_affiliations_closest_to, get_closest_common_parent, 
 
 #ifndef DATASTRUCTURES_HH
 #define DATASTRUCTURES_HH
@@ -97,126 +101,152 @@ public:
     Datastructures();
     ~Datastructures();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(1)
+    // Short rationale for estimate: Returns the size of the unordered_map
     unsigned int get_affiliation_count();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Clears the unordered_map which is O(n)
     void clear_all();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all affiliations
     std::vector<AffiliationID> get_all_affiliations();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(1)
+    // Short rationale for estimate: Insertion in unordered_map
     bool add_affiliation(AffiliationID id, Name const& name, Coord xy);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Lookup in unordered_map
     Name get_affiliation_name(AffiliationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Lookup in unordered_map
     Coord get_affiliation_coord(AffiliationID id);
 
 
     // We recommend you implement the operations below only after implementing the ones above
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n * log(n))
+    // Short rationale for estimate: Sorting a vector of n elements considering case-insensitive comparison. 
     std::vector<AffiliationID> get_affiliations_alphabetically();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n * log(n))
+    // Short rationale for estimate: Sorting a vector of n elements based on distance
     std::vector<AffiliationID> get_affiliations_distance_increasing();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Linear search through all affiliations
     AffiliationID find_affiliation_with_coord(Coord xy);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Lookup and modification in an unordered_map
     bool change_affiliation_coord(AffiliationID id, Coord newcoord);
 
 
     // We recommend you implement the operations below only after implementing the ones above
 
-    // Estimate of performance:
-    // Short rationale for estimate:
-    bool add_publication(PublicationID id, Name const& name, Year year, const std::vector<AffiliationID> & affiliations);
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Insertion in unordered_map
+    bool add_publication(PublicationID id, Name const& name, Year year, const std::vector<AffiliationID>& affiliations);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all publications
     std::vector<PublicationID> all_publications();
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(1)
+    // Short rationale for estimate: Lookup in unordered_map
     Name get_publication_name(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(1)
+    // Short rationale for estimate: Lookup in unordered_map
     Year get_publication_year(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Direct lookup in an unordered_map
     std::vector<AffiliationID> get_affiliations(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Lookups and modification in unordered_map
     bool add_reference(PublicationID id, PublicationID parentid);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n) 
+    // Short rationale for estimate: Direct lookup in an unordered_map
     std::vector<PublicationID> get_direct_references(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n) 
+    // Short rationale for estimate: Lookups and modification in unordered_map
     bool add_affiliation_to_publication(AffiliationID affiliationid, PublicationID publicationid);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all publications
     std::vector<PublicationID> get_publications(AffiliationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all publications
     PublicationID get_parent(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n * log(n))
+    // Short rationale for estimate: Iterating and then sorting the results
     std::vector<std::pair<Year, PublicationID>> get_publications_after(AffiliationID affiliationid, Year year);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterative BFS traversal through the publications.
     std::vector<PublicationID> get_referenced_by_chain(PublicationID id);
 
 
     // Non-compulsory operations
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterative BFS traversal through the publications.
     std::vector<PublicationID> get_all_references(PublicationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n * log(n))
+    // Short rationale for estimate: Iterating through all affiliations and sorting based on distance.
     std::vector<AffiliationID> get_affiliations_closest_to(Coord xy);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all publications to update affiliations.
     bool remove_affiliation(AffiliationID id);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n + m)
+    // Short rationale for estimate: The function performs BFS to find all ancestors of two publications.
     PublicationID get_closest_common_parent(PublicationID id1, PublicationID id2);
 
-    // Estimate of performance:
-    // Short rationale for estimate:
+    // Estimate of performance: O(n)
+    // Short rationale for estimate: Iterating through all publications to update references.
     bool remove_publication(PublicationID publicationid);
 
 
 private:
+    struct Affiliation
+    {
+        Name name;
+        Coord coord;
+    };
 
+    struct Publication
+    {
+        Name name;
+        Year year;
+        std::vector<AffiliationID> affiliations;
+        std::vector<PublicationID> references;
+    };
+
+    struct CaseInsensitiveCompare {
+    bool operator()(const std::string& a, const std::string& b) const {
+        return std::lexicographical_compare(
+            a.begin(), a.end(),
+            b.begin(), b.end(),
+            [](char a, char b) { return std::tolower(a) < std::tolower(b); }
+        );
+    }
+};
+
+    std::unordered_map<Coord, AffiliationID> coordToAffiliation;
+    std::unordered_map<AffiliationID, Affiliation> affiliations;
+    std::unordered_map<PublicationID, Publication> publications;
 };
 
 #endif // DATASTRUCTURES_HH
